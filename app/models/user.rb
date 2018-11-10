@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :trackable, :omniauthable, omniauth_providers: %i(google)
   has_many :tasks
+  has_many :tags
 
   protected
   def self.find_for_google(auth)
