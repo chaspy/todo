@@ -3,7 +3,7 @@ before_action :authenticate_user!, except: [:index]
 
   def new
     @task = Task.new
-    @tags = Tag.all
+    @tags = current_user.tags
     @today = Date.today
   end
 
@@ -22,7 +22,7 @@ before_action :authenticate_user!, except: [:index]
     else
       @tasks = current_user.tasks
     end
-    @tags = Tag.all
+    @tags = current_user.tags
   end
 
   def edit
