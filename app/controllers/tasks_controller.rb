@@ -16,7 +16,7 @@ before_action :authenticate_user!, except: [:index]
   end
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def edit
