@@ -2,9 +2,13 @@ class TagsController < ApplicationController
 before_action :authenticate_user!, except: [:index]
 
   def new
+    @tag = Tag.new
   end
 
   def create
+    tag = Tag.new(tag_params)
+    tag.save!
+    redirect_to tags_url
   end
 
   def index
@@ -16,7 +20,7 @@ before_action :authenticate_user!, except: [:index]
 
   private
 
-  def task_params
-    params.require(:task).permit(:name, :description, :tag_id, :expire_date)
+  def tag_params
+    params.require(:tag).permit(:name)
   end
 end

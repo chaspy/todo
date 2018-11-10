@@ -1,5 +1,7 @@
 <h1>Tags#index</h1>
 
+<%= link_to 'New Tag', new_tag_path %>
+
 <% @tags.each do |t| %>
 <%= t.name %>
 <% end %>
