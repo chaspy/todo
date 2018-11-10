@@ -13,6 +13,9 @@
   <% options = @tags.map do |t| [t.name,t.id] end %>
   Tag:<%= f.select :tag_id, options %>
 
+  <% options = [['今日',@today],['明日',@today + 1],['来週',@today + 7]] %>
+  Expire:<%= f.select :expire_date, options %>
+
   <%= f.submit %>
  
 <% end %>

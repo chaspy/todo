@@ -4,6 +4,7 @@ before_action :authenticate_user!, except: [:index]
   def new
     @task = Task.new
     @tags = Tag.all
+    @today = Date.today
   end
 
   def create
@@ -37,6 +38,6 @@ before_action :authenticate_user!, except: [:index]
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :tag_id)
+    params.require(:task).permit(:name, :description, :tag_id, :expire_date)
   end
 end

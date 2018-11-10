@@ -6,11 +6,12 @@
   <%= link_to "New task", :controller => "tasks", :action => "new" %>
 
   <table>
-  <tr><td>name</td><td>description</td><td>tag</td><td>edit</td><td>delete</td></tr>
+  <tr><td>name</td><td>description</td><td>tag</td><td>expire</td><td>edit</td><td>delete</td></tr>
   <% @tasks.each do |t| %>
     <tr><td><%= t.name %></td>
     <td><%= t.description %></td>
     <td><%= @tags.find(t.tag_id).name %></td>
+    <td><%= t.expire_date %></td>
     <td> <%= link_to "Edit", edit_task_path(t)  %> </td>
     <td> <%= link_to "Delete", task_path(t), :method => :delete, data: {:confirm => "Do you delete the task? #{t.name}"} %> </td>
     </tr>
