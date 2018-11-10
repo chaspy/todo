@@ -7,6 +7,7 @@ before_action :authenticate_user!, except: [:index]
 
   def create
     task = Task.new(task_params)
+    task.user_id = current_user[:id]
     task.save!
     redirect_to tasks_url
   end
