@@ -1,16 +1,21 @@
 <h1>Task#index</h1>
 
-<%= link_to 'Signin with Google', user_google_omniauth_authorize_path %>
+<% if user_signed_in? %>
 
-<%= link_to "New task", :controller => "tasks", :action => "new" %>
+  <%= link_to "Log Out", users_sign_out_path, :method => :delete %>
+  <%= link_to "New task", :controller => "tasks", :action => "new" %>
 
-<table>
-<tr><td>name</td><td>description</td>
-<% @tasks.each do |t| %>
-  <tr><td><%= t.name %></td>
-  <td><%= t.description %></td>
-  <td> <%= link_to "Edit", edit_task_path(t)  %> </td>
-  <td> <%= link_to "Delete", task_path(t), :method => :delete, data: {:confirm => "Do you delete the task? #{t.name}"} %> </td>
-  </tr>
+  <table>
+  <tr><td>name</td><td>description</td>
+  <% @tasks.each do |t| %>
+    <tr><td><%= t.name %></td>
+    <td><%= t.description %></td>
+    <td> <%= link_to "Edit", edit_task_path(t)  %> </td>
+    <td> <%= link_to "Delete", task_path(t), :method => :delete, data: {:confirm => "Do you delete the task? #{t.name}"} %> </td>
+    </tr>
+  <% end %>
+  </table>
+
+<% else %>
+  <%= link_to 'Signin with Google', user_google_omniauth_authorize_path %>
 <% end %>
-</table>
