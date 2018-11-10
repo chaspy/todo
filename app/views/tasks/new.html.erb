@@ -10,6 +10,9 @@
   <%= f.text_field :description %>
   </p>
  
+  <% options = @tags.map do |t| [t.name,t.id] end %>
+  Tag:<%= f.select :tag_id, options %>
+
   <%= f.submit %>
  
 <% end %>

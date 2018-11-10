@@ -3,6 +3,7 @@ before_action :authenticate_user!, except: [:index]
 
   def new
     @task = Task.new
+    @tags = Tag.all
   end
 
   def create
@@ -35,6 +36,6 @@ before_action :authenticate_user!, except: [:index]
   private
 
   def task_params
-    params.require(:task).permit(:name, :description)
+    params.require(:task).permit(:name, :description, :tag_id)
   end
 end
