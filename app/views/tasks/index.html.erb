@@ -4,6 +4,9 @@
 <table>
 <tr><td>name</td><td>description</td>
 <% @tasks.each do |t| %>
-  <tr><td><%= t.name %></td><td><%= t.description %></td>
+  <tr><td><%= t.name %></td>
+  <td><%= t.description %></td>
+  <td> <%= link_to "Edit", edit_task_path(t)  %> </td>
+  </tr>
 <% end %>
 </table>
