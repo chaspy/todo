@@ -8,3 +8,4 @@
 <tr><td><%= t.name %></td><td><%= link_to "Delete", tag_path(t), :method => :delete, data: {:confirm => "Do you delete the tag? #{t.name}"} %></td></tr>
 <% end %>
 </table>
+<%= link_to 'Back Tasks', tasks_path %>
