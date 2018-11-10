@@ -13,7 +13,7 @@
     <tr><td><%= t.name %></td>
     <td><%= t.description %></td>
     <td><%= link_to @tags.find(t.tag_id).name, tasks_path(tag_id: t.tag_id) %></td>
-    <td><%= t.expire_date.to_date %></td>
+    <td><%= link_to t.expire_date.to_date, tasks_path(expire_date: t.expire_date.to_date) %></td>
     <td> <%= link_to "Edit", edit_task_path(t)  %> </td>
     <td> <%= link_to "Delete", task_path(t), :method => :delete, data: {:confirm => "Do you delete the task? #{t.name}"} %> </td>
     </tr>

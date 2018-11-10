@@ -17,6 +17,8 @@ before_action :authenticate_user!, except: [:index]
   def index
     if params[:tag_id] then
       @tasks = current_user.tasks.where(tag_id: params[:tag_id])
+    elsif params[:expire_date] then
+      @tasks = current_user.tasks.where(expire_date: params[:expire_date])
     else
       @tasks = current_user.tasks
     end
