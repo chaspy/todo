@@ -15,7 +15,11 @@ before_action :authenticate_user!, except: [:index]
   end
 
   def index
-    @tasks = current_user.tasks
+    if params[:tag_id] then
+      @tasks = current_user.tasks.where(tag_id: params[:tag_id])
+    else
+      @tasks = current_user.tasks
+    end
     @tags = Tag.all
   end
 
