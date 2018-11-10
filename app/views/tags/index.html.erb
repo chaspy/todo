@@ -2,6 +2,9 @@
 
 <%= link_to 'New Tag', new_tag_path %>
 
+<table>
+<tr><td>name</td><td>delete</td>
 <% @tags.each do |t| %>
-<%= t.name %>
+<tr><td><%= t.name %></td><td><%= link_to "Delete", tag_path(t), :method => :delete, data: {:confirm => "Do you delete the tag? #{t.name}"} %></td></tr>
 <% end %>
+</table>

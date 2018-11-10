@@ -16,6 +16,9 @@ before_action :authenticate_user!, except: [:index]
   end
 
   def destroy
+    tag = Tag.find(params[:id])
+    tag.destroy
+    redirect_to tags_url
   end
 
   private
