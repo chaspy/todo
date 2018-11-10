@@ -7,12 +7,13 @@ before_action :authenticate_user!, except: [:index]
 
   def create
     tag = Tag.new(tag_params)
+    tag.user_id = current_user[:id]
     tag.save!
     redirect_to tags_url
   end
 
   def index
-    @tags = Tag.all    
+    @tags = current_user.tags
   end
 
   def destroy
