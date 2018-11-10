@@ -12,9 +12,6 @@ before_action :authenticate_user!, except: [:index]
     redirect_to tasks_url
   end
 
-  def show
-  end
-
   def index
     @tasks = current_user.tasks
   end
