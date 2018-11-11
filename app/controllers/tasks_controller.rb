@@ -15,14 +15,17 @@ before_action :authenticate_user!, except: [:index]
   end
 
   def index
-    if params[:tag_id] then
+    if !current_user
+      @tasks = {}
+    elsif params[:tag_id] then
       @tasks = current_user.tasks.where(tag_id: params[:tag_id])
     elsif params[:expire_date] then
       @tasks = current_user.tasks.where(expire_date: params[:expire_date])
     else
       @tasks = current_user.tasks.order(:expire_date)
     end
-    @tags = current_user.tags
+
+    @tags = current_user.tags if current_user
 
     respond_to do |format|
       format.html
