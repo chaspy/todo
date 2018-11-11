@@ -20,9 +20,10 @@ before_action :authenticate_user!, except: [:index]
     elsif params[:expire_date] then
       @tasks = current_user.tasks.where(expire_date: params[:expire_date])
     else
-      @tasks = current_user.tasks
+      @tasks = current_user.tasks.order(:expire_date)
     end
     @tags = current_user.tags
+    render :json => @tasks
   end
 
   def edit
