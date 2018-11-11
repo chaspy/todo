@@ -23,7 +23,11 @@ before_action :authenticate_user!, except: [:index]
       @tasks = current_user.tasks.order(:expire_date)
     end
     @tags = current_user.tags
-    render :json => @tasks
+
+    respond_to do |format|
+      format.html
+      format.json {render :json => @tasks }
+    end
   end
 
   def edit
