@@ -49,6 +49,6 @@ before_action :authenticate_user!, except: [:index]
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :tag_id, :expire_date)
+    params.require(:task).permit(:name, :description, :tag_id, :expire_date, :image)
   end
 end

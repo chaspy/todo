@@ -16,6 +16,8 @@
   <% options = [['今日',@today],['明日',@today + 1],['来週',@today + 7]] %>
   Expire:<%= f.select :expire_date, options %>
 
+  <%= f.file_field :image %>
+
   <%= f.submit %>
  
 <% end %>

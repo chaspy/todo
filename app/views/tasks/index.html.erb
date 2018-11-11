@@ -8,7 +8,7 @@
   <%= link_to "List Tags", tags_path %>
 
   <table>
-  <tr><td>name</td><td>description</td><td>tag</td><td>expire</td><td>edit</td><td>delete</td></tr>
+  <tr><td>name</td><td>description</td><td>tag</td><td>expire</td><td>edit</td><td>delete</td><td>image</td></tr>
   <% @tasks.each do |t| %>
     <tr><td><%= t.name %></td>
     <td><%= t.description %></td>
@@ -16,6 +16,10 @@
     <td><%= link_to t.expire_date.to_date, tasks_path(expire_date: t.expire_date.to_date) %></td>
     <td> <%= link_to "Edit", edit_task_path(t)  %> </td>
     <td> <%= link_to "Delete", task_path(t), :method => :delete, data: {:confirm => "Do you delete the task? #{t.name}"} %> </td>
+    <td>
+    <% if t.image.attached? %>
+      <%= link_to "Image", rails_blob_path(t.image, disposition: "attachment") %> </td>
+    <% end %>
     </tr>
   <% end %>
   </table>
