@@ -49,6 +49,12 @@ before_action :authenticate_user!, except: [:index]
     redirect_to tasks_url
   end
 
+  def image_destroy
+    task = Task.find(params[:id])
+    task.image.purge
+    redirect_to tasks_url
+  end
+
   private
 
   def task_params

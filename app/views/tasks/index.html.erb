@@ -18,7 +18,9 @@
     <td> <%= link_to "Delete", task_path(t), :method => :delete, data: {:confirm => "Do you delete the task? #{t.name}"} %> </td>
     <td>
     <% if t.image.attached? %>
-      <%= link_to "Image", rails_blob_path(t.image, disposition: "attachment") %> </td>
+      <%= link_to "Image", rails_blob_path(t.image, disposition: "attachment") %>
+      <%= link_to "Delete", delete_task_image_path(id: t.id), :method => :delete, data: {:confirm => "Do you delete the image?"} %>
+    </td>
     <% end %>
     </tr>
   <% end %>
